@@ -31,7 +31,7 @@ trainee = {
     7:{}
     8:{}
 }
-stable_orders = []
+
 
 def main_menu():
   while:
@@ -54,6 +54,16 @@ def main_menu():
     else:
       print("Invalid input!!")
 
+#nawaf zakri admin
+
+
+
+
+#abdulaziz alshebl trainee
+
+
+
+#turki abu haimed horse managmet
 
 
 
