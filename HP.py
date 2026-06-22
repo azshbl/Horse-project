@@ -10,7 +10,7 @@ horses = {
     9: {"owner_name": "Turki", "horse_name": "Borkan", "age": 5, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 93, "health_score": 94},
     10: {"owner_name": "Turki", "horse_name": "Raad", "age": 4, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 92, "health_score": 90},
     11: {"owner_name": "Turki", "horse_name": "Barq", "age": 7, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 98, "health_score": 99},
-    12: {"owner_name": "Turki", "horse_name": "Aseel", "age": 6, "gender": "female", "breed": "arabian", "status": "stable", "horse_level": 96, "health_score": 95},
+    12: {"owner_name": "Turki", "horse_name": "Asael", "age": 6, "gender": "female", "breed": "arabian", "status": "stable", "horse_level": 96, "health_score": 95},
     13: {"owner_name": "Nawaf", "horse_name": "Mazyon", "age": 5, "gender": "male", "breed": "arabian", "status": "boarding", "horse_level": 88, "health_score": 84},
     14: {"owner_name": "Abdulaziz", "horse_name": "alshqh", "age": 4, "gender": "male", "breed": "arabian", "status": "boarding", "horse_level": 85, "health_score": 87},
     15: {"owner_name": "Nawaf.z", "horse_name": "gzar", "age": 6, "gender": "male", "breed": "thoroughbred", "status": "boarding", "horse_level": 90, "health_score": 91},
