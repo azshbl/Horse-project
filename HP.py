@@ -2,7 +2,7 @@ horses = {
     1: {"owner_name": "Turki", "horse_name": "Wadah", "age": 6, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 100, "health_score": 100},
     2: {"owner_name": "Turki", "horse_name": "Shamekh", "age": 5, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 97, "health_score": 95},
     3: {"owner_name": "Turki", "horse_name": "Alskb", "age": 7, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 94, "health_score": 92},
-    4: {"owner_name": "Turki", "horse_name": "Abiah", "age": 7, "gender": "female", "breed": "arabian", "status": "stable", "horse_level": 96, "health_score": 98},
+    4: {"owner_name": "Turki", "horse_name": "Abiah.t", "age": 7, "gender": "female", "breed": "arabian", "status": "stable", "horse_level": 96, "health_score": 98},
     5: {"owner_name": "Turki", "horse_name": "Seham", "age": 5, "gender": "female", "breed": "arabian", "status": "stable", "horse_level": 91, "health_score": 93},
     6: {"owner_name": "Turki", "horse_name": "Rahaf", "age": 6, "gender": "female", "breed": "arabian", "status": "stable", "horse_level": 95, "health_score": 96},
     7: {"owner_name": "Turki", "horse_name": "Kehelan", "age": 4, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 90, "health_score": 89},
@@ -16,7 +16,7 @@ horses = {
     15: {"owner_name": "Nawaf.z", "horse_name": "gzar", "age": 6, "gender": "male", "breed": "thoroughbred", "status": "boarding", "horse_level": 90, "health_score": 91},
     16: {"owner_name": "Abdullah", "horse_name": "nomas", "age": 5, "gender": "male", "breed": "arabian", "status": "boarding", "horse_level": 100, "health_score": 100},
     17: {"owner_name": "Khulod", "horse_name": "Najm", "age": 7, "gender": "male", "breed": "arabian", "status": "boarding", "horse_level": 100, "health_score": 100},
-    18: {"owner_name": "Abulaziz", "horse_name": "Deem", "age": 4, "gender": "female", "breed": "arabian", "status": "boarding", "horse_level": 84, "health_score": 90},
+    18: {"owner_name": "Abulaziz", "horse_name": "abiah", "age": 4, "gender": "female", "breed": "arabian", "status": "boarding", "horse_level": 84, "health_score": 90},
     19: {"owner_name": "Nawaf", "horse_name": "Anood", "age": 5, "gender": "female", "breed": "arabian", "status": "boarding", "horse_level": 87, "health_score": 85},
     20: {"owner_name": "Nawaf.z", "horse_name": "Shadad", "age": 6, "gender": "male", "breed": "thoroughbred", "status": "boarding", "horse_level": 91, "health_score": 89}
 }
