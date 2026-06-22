@@ -60,7 +60,29 @@ def main_menu():
 
 
 #abdulaziz alshebl trainee
+"""
+trainee = {
+    
+           name
+           age
+           when do you want the class
+           what type do want(jumping,for fun,racing)
+           how many hours have you trained(1,20,3,30)
+           what package do you want(1,,10,20,40)
+                      
+           40 class 
+           after you finish 40 classes  
 
+
+           Jumping
+           90
+
+           hourse level 100
+           trainer performance 99
+           trainers hours completed 98
+
+}
+"""
 
 
 #turki abu haimed horse managmet
