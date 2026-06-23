@@ -1,5 +1,3 @@
-admin method
-
 horses = {
     1: {"owner_name": "Turki", "horse_name": "Wadah", "age": 6, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 100, "health_score": 100},
     2: {"owner_name": "Turki", "horse_name": "Shamekh", "age": 5, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 97, "health_score": 95},
@@ -22,6 +20,7 @@ horses = {
     19: {"owner_name": "Nawaf", "horse_name": "Anood", "age": 5, "gender": "female", "breed": "arabian", "status": "boarding", "horse_level": 70, "health_score": 85},
     20: {"owner_name": "Nawaf.z", "horse_name": "Shadad", "age": 6, "gender": "male", "breed": "frezian", "status": "boarding", "horse_level": 65, "health_score": 89}
 }
+
 
 
 trainers = {
@@ -56,7 +55,6 @@ trainees = {
 }
 
 
-
 def show_horses():
 
     print("\n========== HORSES LIST ==========\n")
@@ -71,7 +69,6 @@ def show_horses():
         print(f"Horse Level: {horse['horse_level']}")
         print(f"Status: {horse['status']}")
         print("-" * 30)
-
 
 
 
@@ -102,33 +99,18 @@ def search_horse():
 
 
 
-def trainer_level(score):
-
-    if score >= 90:
-        return "Advanced"
-
-    elif score >= 80 and score <=89:
-        return "Intermediate"
-
-    elif score < 80:
-        return "Beginner"
-
-
-
 def show_trainers():
 
     print("\n===== TRAINERS LIST =====\n")
 
     for trainer_id, trainer in trainers.items():
 
-        level = trainer_level(trainer["performance_score"])
 
         print(f"Trainer Name: {trainer['trainer_name']}")
         print(f"Age: {trainer['age']}")
         print(f"Training Type: {trainer['training_type']}")
         print(f"Sessions Completed: {trainer['sessions_completed']}")
         print(f"Performance Score: {trainer['performance_score']}")
-        print(f"Level: {level}")
         print("-" * 30)
 
 
@@ -142,7 +124,6 @@ def best_trainer():
     print(f"Performance Score: {best['performance_score']}")
     print(f"Sessions Completed: {best['sessions_completed']}")
     print(f"Level: {trainer_level(best['performance_score'])}")
-
 
 
 
@@ -163,7 +144,7 @@ def show_trainees():
 
 
 
-def horse_statistics():
+def horse_records():
 
     total_horses = len(horses)
 
@@ -186,7 +167,7 @@ def horse_statistics():
         elif horse["breed"] == "frezian":
             frezian_count += 1
 
-    print("\n===== Horse Statistics =====")
+    print("\n===== Horse Records =====")
     print(f"Total Horses: {total_horses}")
     print(f"Stable Horses: {stable_horses_count}")
     print(f"Boarding Horses: {boarding_count}")
@@ -203,7 +184,7 @@ def admin_menu():
         print("\n===== ADMIN MENU =====")
         print("1. Show Horses")
         print("2. Search Horse")
-        print("3. Horse Statistics")
+        print("3. Horse Records")
         print("4. Show Trainers")
         print("5. Best Trainer")
         print("6. Show Trainees")
@@ -218,7 +199,7 @@ def admin_menu():
             search_horse()
 
         elif choice == "3":
-            horse_statistics()
+            horse_records()
 
         elif choice == "4":
             show_trainers()
@@ -234,156 +215,3 @@ def admin_menu():
 
         else:
             print("Invalid choice.")
-
-
-
-
-
-def horse_owner_menu(owner_name):
-
-    while True:
-
-        print(f"\n===== WELCOME {owner_name} =====")
-        print("1. View My Horses")
-        print("0. Back")
-
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-
-            for horse in horses.values():
-
-                if horse["owner_name"].lower() == owner_name.lower():
-
-                    print(f"\nHorse: {horse['horse_name']}")
-                    print(f"Breed: {horse['breed']}")
-                    print(f"Health Score: {horse['health_score']}")
-                    print(f"Horse Level: {horse['horse_level']}")
-
-        elif choice == "0":
-            break
-
-        else:
-            print("Invalid choice")
-
-
-
-
-
-def trainee_menu(trainee_name):
-
-    while True:
-
-        print("1. My Information")
-        print("2. Remaining Classes")
-        print("3. License Status")
-        print("0. Back")
-
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-
-            for trainee in trainees.values():
-
-                if trainee["trainee_name"].lower() == trainee_name.lower():
-
-                    print(f"\nName: {trainee['trainee_name']}")
-                    print(f"Age: {trainee['age']}")
-                    print(f"Training Type: {trainee['training_type']}")
-                    print(f"Completed Classes: {trainee['completed_classes']}")
-                    print(f"Package: {trainee['package']}")
-
-                    if trainee["license"]:
-                       print("License: Licensed")
-                    else:
-                       print("License: Not Licensed")
-                    
-                    break
-
-
-        elif choice == "2":
-
-            for trainee in trainees.values():
-
-                if trainee["trainee_name"].lower() == trainee_name.lower():
-
-                    remaining = trainee["package"] - trainee["completed_classes"]
-
-                    print(f"\nRemaining Classes: {remaining}")
-                    break
-
-        elif choice == "3":
-          
-          for trainee in trainees.values():
-            
-            if trainee["trainee_name"].lower() == trainee_name.lower():
-              
-              if trainee["license"]:
-                
-                print("\nLicense Status: Licensed")
-
-              else:
-                print("\nLicense Status: Not Licensed")
-              
-              break
-
-        elif choice == "0":
-            break
-
-        else:
-            print("Invalid choice")
-
-
-
-
-
-def main_menu():
-
-    while True:
-
-        print("\n===== HORSE STABLE MANAGEMENT SYSTEM =====")
-        print("1. Admin")
-        print("2. Horse Owner")
-        print("3. Trainee")
-        print("0. Exit")
-
-        choice = input("\nEnter your choice: ")
-
-        if choice == "1":
-            admin_menu()
-
-        elif choice == "2":
-
-            owner_name = input("Enter your name: ")
-
-            for owner in owners.values():
-
-                if owner["owner_name"].lower() == owner_name.lower():
-                    horse_owner_menu(owner_name)
-                    break
-
-            else:
-                print("Owner not found.")
-
-        elif choice == "3":
-
-            trainee_name = input("Enter your name: ")
-
-            for trainee in trainees.values():
-
-                if trainee["trainee_name"].lower() == trainee_name.lower():
-                    trainee_menu(trainee_name)
-                    break
-
-            else:
-                print("Trainee not found.")
-
-        elif choice == "0":
-            print("Thank you for using the system.")
-            break
-
-        else:
-            print("Invalid choice.")
-
-
-main_menu()
