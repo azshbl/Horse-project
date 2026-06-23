@@ -29,7 +29,7 @@ trainers = {
     1: {"trainer_name": "Turki", "age": 24, "training_type": "Racing, For fun,",  "sessions_completed": 70, "performance_score": 99},
     2: {"trainer_name": "Abdulaziz", "age": 24, "training_type": "Jumping",  "sessions_completed": 56, "performance_score": 95},
     3: {"trainer_name": "Nawaf.z", "age": 24, "training_type": "For fun", "sessions_completed": 20, "performance_score": 89},
-    4: {"trainer_name": "Nawaf", "age": 24, "training_type": "Racing",  "sessions_completed": 50, "performance_score": 85},
+    4: {"trainer_name": "Nawaf", "age": 24, "training_type": "Jumping",  "sessions_completed": 50, "performance_score": 85},
     5: {"trainer_name": "Khalid", "age": 22, "training_type": "Racing",  "sessions_completed": 30, "performance_score": 80},
     6: {"trainer_name": "Saud", "age": 20, "training_type": "Racing",  "sessions_completed": 10, "performance_score": 79},
     7: {"trainer_name": "Abdullah", "age": 24, "training_type": "Jumping",  "sessions_completed": 22, "performance_score": 75},
