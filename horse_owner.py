@@ -64,3 +64,5 @@ def horse_owner_menu():
             view_my_horses()
         elif choice == "0":
             break
+
+horse_owner_menu()
