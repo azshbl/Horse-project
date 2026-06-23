@@ -5,30 +5,30 @@ def request_stable_service():
     horse_name = input("Enter Horse Name: ")
     
     print("\nChoose boarding Duration:")
-    print("1. 1 Month  (5,000 SAR)")
-    print("2. 3 Months (15,000 SAR)")
-    print("3. 5 Months (25,000 SAR)")
-    print("4. 7 Months (35,000 SAR)")
-    print("5. 9 Months (45,000 SAR)")
-    print("6. 11 Months (55,000 SAR)")
-    print("7. 1 Year/12 Months (50,000 SAR)")
+    print("1. 1 Month  (1,500 SAR)")
+    print("2. 3 Months (4,300 SAR)")
+    print("3. 5 Months (7,300 SAR)")
+    print("4. 7 Months (10,300 SAR)")
+    print("5. 9 Months (13,300 SAR)")
+    print("6. 11 Months (16,300 SAR)")
+    print("7. 1 Year/12 Months (17,500 SAR)")
     
     duration_choice = input("Select 1 to 7: ")
     
     if duration_choice == "1":
-        print("Success! boarding requested for 1 Month. Cost: 5000 SAR")
+        print("Success! boarding requested for 1 Month. Cost: 1500 SAR")
     elif duration_choice == "2":
-        print("Success! boarding requested for 3 Months. Cost: 15000 SAR")
+        print("Success! boarding requested for 3 Months. Cost: 4300 SAR")
     elif duration_choice == "3":
-        print("Success! boarding requested for 5 Months. Cost: 25000 SAR")
+        print("Success! boarding requested for 5 Months. Cost: 7300 SAR")
     elif duration_choice == "4":
-        print("Success! boarding requested for 7 Months. Cost: 35000 SAR")
+        print("Success! boarding requested for 7 Months. Cost: 10300 SAR")
     elif duration_choice == "5":
-        print("Success! boarding requested for 9 Months. Cost: 45000 SAR")
+        print("Success! boarding requested for 9 Months. Cost: 13300 SAR")
     elif duration_choice == "6":
-        print("Success! boarding requested for 11 Months. Cost: 55000 SAR")
+        print("Success! boarding requested for 11 Months. Cost: 16300 SAR")
     elif duration_choice == "7":
-        print("Success! boarding requested for 1 Year. Cost: 50000 SAR")
+        print("Success! boarding requested for 1 Year. Cost: 17500 SAR")
     else:
         print("Invalid choice.")
 
