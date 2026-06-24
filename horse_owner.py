@@ -110,7 +110,7 @@ def request_stable_service():
     print("--- boarding ---")
 
     owner_name = input("Enter Owner Name: ")
-    owner_phone = input("Enter Owner Phone Number: ")                                # If I had more time, I would improve this code and add features to it.
+    owner_phone = input("Enter Owner Phone Number: ")                               
     horse_name = input("Enter Horse Name: ")
     horse_age = input("Enter your horse age: ")
 
@@ -133,7 +133,7 @@ def request_stable_service():
     if duration_choice == "1":
         print("Success! boarding requested for 1 Month. Cost: 1500 SAR")
     elif duration_choice == "2":
-        print("Success! boarding requested for 3 Months. Cost: 4300 SAR")             # I enjoyed the if statement concept; writing the conditions was beautiful.
+        print("Success! boarding requested for 3 Months. Cost: 4300 SAR")             
     elif duration_choice == "3":
         print("Success! boarding requested for 5 Months. Cost: 7300 SAR")
     elif duration_choice == "4":
@@ -166,7 +166,7 @@ def view_my_horses():
 
 def horse_owner_menu():
     while True:
-        print("\n=== Horse Owner Menu ===")                       #This part of the code was very challenging for me as I had to search through many data sources.
+        print("\n=== Horse Owner Menu ===")                      
         print("1. boarding")
         print("2. View My Horses")
         print("0. Back")
@@ -181,3 +181,8 @@ def horse_owner_menu():
             break
         else:
             print("Invalid choice.")
+
+
+ # in request_stable_service()  (If I had more time, I would improve this code and add features to it.)
+ # in if-elif-else statment  (I enjoyed the if statement concept; writing the conditions was beautiful.)
+ # in horse_owner_menu()   ( This part of the code was very challenging for me as I had to search through many data sources.)
