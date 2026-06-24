@@ -257,7 +257,7 @@ def request_stable_service():
     owner_name = input("Enter Owner Name: ")
     horse_name = input("Enter Horse Name: ")
     horse_age = input("Enter your horse age: ")
-    horse_gender = input("Enter your horse gender (male / female): ")   ###### male or female only
+    horse_gender = input("Enter your horse gender (male / female): ")   
 
     print("\nChoose boarding Duration:")
     print("1. 1 Month  (1,500 SAR)")
