@@ -2,7 +2,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Horse Stable System",
     page_icon="🐎",
-    layout="wide"
+    layout="centered",
 )
 
 st.markdown("""
@@ -69,7 +69,7 @@ h1, h2, h3 {
 </style>
 """, unsafe_allow_html=True)
 
-st.set_page_config(page_title="Horse Stable System", layout="centered")
+
 
 horses = {
     1: {"owner_name": "Turki", "horse_name": "Wadah", "age": 6, "gender": "male", "breed": "arabian", "status": "stable", "horse_level": 100, "health_score": 100},
@@ -103,6 +103,16 @@ trainers = {
     6: {"trainer_name": "Saud", "age": 20, "training_type": "Racing", "sessions_completed": 10, "performance_score": 79},
     7: {"trainer_name": "Abdullah", "age": 24, "training_type": "Jumping", "sessions_completed": 22, "performance_score": 75},
     8: {"trainer_name": "Mohammed", "age": 26, "training_type": "For fun", "sessions_completed": 40, "performance_score": 70}
+}
+
+owners = {
+    1: {"owner_name": "Turki", "phone": "05012345671", "city": "Riyadh", "owner_type": "Stable Owner"},
+    2: {"owner_name": "Nawaf", "phone": "05012345681", "city": "Riyadh", "owner_type": "Boarding Client"},
+    3: {"owner_name": "Abdulaziz", "phone": "05012345691", "city": "Riyadh", "owner_type": "Boarding Client"},
+    4: {"owner_name": "Nawaf.z", "phone": "05012345701", "city": "Riyadh", "owner_type": "Boarding Client"},
+    5: {"owner_name": "Abdullah", "phone": "05012345711", "city": "Riyadh", "owner_type": "Boarding Client"},
+    6: {"owner_name": "Khulod", "phone": "05012345721", "city": "Riyadh", "owner_type": "Boarding Client"},
+    7: {"owner_name": "Abulaziz", "phone": "05012345731", "city": "Riyadh", "owner_type": "Boarding Client"}
 }
 
 if "trainees" not in st.session_state:
@@ -245,19 +255,20 @@ if main_choice == "Admin":
                 frezian_count += 1
 
         
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3, col4 , col5= st.columns(5)
 
         col1.metric("🐎 Total Horses", total_horses)
         col2.metric("🏠 Stable Horses", stable_count)
         col3.metric("📋 Boarding Horses", boarding_count)
         col4.metric("🌟 Arabian Horses", arabian_count)
-
+        col5.metric("🌟 Frezian Horses", frezian_count)
 
 
         col1.metric("Total Horses", total_horses)
         col2.metric("Stable Horses", stable_count)
         col3.metric("Boarding Horses", boarding_count)
         col4.metric("Arabian Horses", arabian_count)
+        col5.metric("Frezian Horses", frezian_count)
 
     elif admin_choice == "Show Trainers":
         for trainer_id, trainer in trainers.items():
