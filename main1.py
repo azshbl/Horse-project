@@ -353,7 +353,8 @@ def horse_owner_menu():                                  #View Horse Owner menu
 
 # ================= TRAINEE FUNCTIONS =================
 
-def assign_trainer(training_type, level):
+
+def assign_trainer(training_type, level):                 #Assigns a trainer to the trainee based on training type and level.
     for trainer in trainers.values():
         score = trainer["performance_score"]
 
@@ -372,7 +373,8 @@ def assign_trainer(training_type, level):
     return "ًWill be assigned later "
 
 
-def assign_horse(level):
+
+def assign_horse(level):                                # Assigns a suitable horse to the trainee based on their level.
     for horse in horses.values():
         horse_level = horse["horse_level"]
 
@@ -388,10 +390,11 @@ def assign_horse(level):
     return "No Horse Available"
 
 
+# function registers a new trainee and automatically assigns a trainer and horse.
 def register_trainee():
     trainee_id = max(trainees.keys()) + 1
 
-    print("\n===== TRAINEE REGISTRATION =====")
+    print("\n<--------- TRAINEE REGISTRATION -------->")
 
     name = input("Enter your name: ")
     age = int(input("Enter your age: "))
@@ -425,7 +428,7 @@ def register_trainee():
         else:
             print("Invalid package.")
 
-    print("\n===== INITIAL ASSESSMENT =====")
+    print("\n<---------- INITIAL ASSESSMENT ----------->")
     print("1. Beginner")
     print("2. Intermediate")
     print("3. Advanced")
@@ -461,17 +464,18 @@ def register_trainee():
     }
 
     print("\nRegistration Successful.")
-    print("Application Accepted.")
     print(f"Assigned Trainer: {trainer_name}")
     print(f"Assigned Horse: {horse_name}")
 
 
-def show_trainee_info(name):
+
+
+def show_trainee_info(name):                    # Displays all information related to a specific trainee.
     found = False
 
     for trainee in trainees.values():
         if trainee["trainee_name"].lower() == name.lower():
-            print("\n===== MY INFORMATION =====")
+            print("\n<-------- MY INFORMATION ---------->")
             print(f"Name: {trainee['trainee_name']}")
             print(f"Age: {trainee['age']}")
             print(f"Training Type: {trainee['training_type']}")
@@ -493,7 +497,9 @@ def show_trainee_info(name):
         print("Trainee not found.")
 
 
-def show_progress(name):
+
+
+def show_progress(name):                 #Calculates and displays the trainee's training progress and remaining classes.
     found = False
 
     for trainee in trainees.values():
@@ -504,7 +510,7 @@ def show_progress(name):
             if remaining < 0:
                 remaining = 0
 
-            print("\n===== PROGRESS REPORT =====")
+            print("\n<------ PROGRESS REPORT ------>")
             print(f"Completed Classes: {trainee['completed_classes']}")
             print(f"Remaining Classes: {remaining}")
             print(f"Progress: {progress:.0f}%")
@@ -516,7 +522,7 @@ def show_progress(name):
         print("Trainee not found.")
 
 
-def complete_class(name):
+def complete_class(name):                    # Increases the trainee's completed classes and issues a license automatically after completing 40 classes.
     found = False
 
     for trainee in trainees.values():
@@ -539,10 +545,10 @@ def complete_class(name):
                 trainee["license"] = True
 
                 print("""
-=========================================
+<------------------------------------------>
 Congratulations!
 You have earned your riding license.
-=========================================
+<------------------------------------------>
 """)
 
             found = True
@@ -552,9 +558,9 @@ You have earned your riding license.
         print("Trainee not found.")
 
 
-def trainee_menu():
+def trainee_menu():                    # Displays the trainee menu and allows access to all trainee services.
     while True:
-        print("\n===== TRAINEE MENU =====")
+        print("\n<----------- TRAINEE MENU ------------>")
         print("1. Register Trainee")
         print("2. My Information")
         print("3. Progress Report")
@@ -578,6 +584,17 @@ def trainee_menu():
             break
         else:
             print("Invalid choice.")
+
+
+
+"""
+abdulaziz saleh alshebl 
+    
+1. The most challenging part was linking trainees with suitable trainers and horses automatically based on their level and training type.
+2. enjoyed implementing the completed classes feature because it updates the trainee's progress every time a class is completed.
+3. If I had more time, I would add a scheduling feature that allows trainees to choose their training start date and time."""
+
+
 
 
 # ================= MAIN MENU =================
