@@ -175,6 +175,21 @@ def horse_statistics():
     print(f"Frezian Horses: {frezian_count}")
 
 
+def show_owners():
+
+    print("\n===== OWNERS LIST =====")
+
+    for owner_id, owner in owners.items():
+
+        print(f"Owner ID: {owner_id}")
+        print(f"Name: {owner['owner_name']}")
+        print(f"Phone: {owner['phone']}")
+        print(f"City: {owner['city']}")
+        print(f"Owner Type: {owner['owner_type']}")
+        print("-" * 30)
+
+
+
 def admin_menu():
     while True:
         print("\n===== ADMIN MENU =====")
@@ -184,6 +199,7 @@ def admin_menu():
         print("4. Show Trainers")
         print("5. Best Trainer")
         print("6. Show Trainees")
+        print("7. Show Owners")
         print("0. Back")
 
         choice = input("\nEnter your choice: ")
@@ -200,6 +216,8 @@ def admin_menu():
             best_trainer()
         elif choice == "6":
             show_trainees()
+        elif choice == "7": 
+            show_owners()
         elif choice == "0":
             break
         else:
