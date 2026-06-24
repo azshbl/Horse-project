@@ -97,7 +97,7 @@ def show_horses():                                         #this part is to show
         print("-" * 30)
 
 
-def search_horse():
+def search_horse():                 #this part is to search for horses
     while True:
         horse_name = input("\nEnter horse name (or 'exit' to stop): ")
 
@@ -121,7 +121,7 @@ def search_horse():
             print("Horse not found.")
 
 
-def trainer_level(score):
+def trainer_level(score):                 
     if score >= 90:
         return "Advanced"
     elif score >= 80:
@@ -130,7 +130,7 @@ def trainer_level(score):
         return "Beginner"
 
 
-def show_trainers():
+def show_trainers():                                 #this part is to show trainers
     print("\n===== TRAINERS LIST =====\n")
 
     for trainer_id, trainer in trainers.items():
@@ -146,7 +146,7 @@ def show_trainers():
         print("-" * 30)
 
 
-def best_trainer():
+def best_trainer():             #this part is to calcluate the best trainer using the performance score
     best = max(trainers.values(), key=lambda trainer: trainer["performance_score"])
 
     print("\n===== BEST TRAINER =====")
@@ -156,7 +156,7 @@ def best_trainer():
     print(f"Level: {trainer_level(best['performance_score'])}")
 
 
-def show_trainees():
+def show_trainees():                                 #this part is to show trainees
     print("\n===== TRAINEES LIST =====\n")
 
     for trainee_id, trainee in trainees.items():
@@ -173,7 +173,7 @@ def show_trainees():
         print("-" * 30)
 
 
-def horse_statistics():
+def horse_statistics():                         #this part is to count how many horses , bordint and breed
     total_horses = len(horses)
 
     stable_horses_count = 0
