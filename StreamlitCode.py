@@ -1,4 +1,5 @@
 import streamlit as st
+
 st.set_page_config(
     page_title="Horse Stable System",
     page_icon="🐎",
@@ -7,68 +8,220 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600;700&display=swap');
+
+* { font-family: 'Inter', sans-serif; }
+
 .stApp {
-    background: linear-gradient(135deg, #1b130d, #2b1d12, #0f0f0f);
-    color: #f5e6c8;
+    background: radial-gradient(circle at 20% 0%, #1a2e2a 0%, #0a1410 45%, #060908 100%);
+    color: #eae3d3;
+}
+
+/* animated glow backdrop behind the title */
+.hero-wrap {
+    position: relative;
+    text-align: center;
+    padding: 38px 10px 28px 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(20,80,60,0.15));
+    border: 1px solid rgba(212,175,55,0.25);
+}
+
+.hero-glow {
+    position: absolute;
+    top: -60px; left: 50%;
+    width: 420px; height: 220px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(212,175,55,0.35), transparent 70%);
+    filter: blur(10px);
+    animation: pulse-glow 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
 }
 
 .main-title {
-    font-size: 45px;
-    font-weight: bold;
-    color: #d4af37;
-    text-align: center;
-    margin-bottom: 5px;
+    position: relative;
+    font-family: 'Cinzel', serif;
+    font-size: 44px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #f5e6c8, #d4af37, #8fd9b6, #d4af37, #f5e6c8);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 300% center; }
 }
 
 .sub-title {
-    font-size: 18px;
-    color: #f5e6c8;
+    position: relative;
+    font-size: 15px;
+    color: #9fcdb8;
     text-align: center;
-    margin-bottom: 30px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
+/* ---- glass cards ---- */
 .card {
-    background-color: rgba(255, 255, 255, 0.08);
-    padding: 20px;
-    border-radius: 18px;
-    border: 1px solid #d4af37;
-    margin-bottom: 15px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+    position: relative;
+    background: rgba(255,255,255,0.045);
+    backdrop-filter: blur(6px);
+    padding: 22px 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(212,175,55,0.35);
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #d4af37, #5ec99a, #d4af37);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(94,201,154,0.6);
+    box-shadow: 0 12px 30px rgba(94,201,154,0.18);
 }
 
 .card-title {
-    color: #d4af37;
-    font-size: 22px;
-    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    color: #f0d68a;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.sidebar .sidebar-content {
-    background-color: #1b130d;
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 2px;
+    border-bottom: 1px dashed rgba(234,227,211,0.1);
+    font-size: 14.5px;
+}
+
+.card-row:last-child { border-bottom: none; }
+
+.card-label { color: #8fae9d; font-weight: 600; }
+.card-value { color: #eae3d3; font-weight: 500; }
+
+.badge {
+    display: inline-block;
+    padding: 3px 13px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.badge-green { background: #2e8b57; color: white; }
+.badge-blue  { background: #2a6f97; color: white; }
+.badge-gold  { background: #d4af37; color: #1a1208; }
+.badge-grey  { background: #444f4a; color: #ddd; }
+
+hr.divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+    margin: 22px 0;
+}
+
+/* ---- nav pill buttons (sections) ---- */
+.nav-tag {
+    text-align: center;
+    margin-bottom: 14px;
+}
+.nav-tag span {
+    background: linear-gradient(135deg, rgba(94,201,154,0.18), rgba(212,175,55,0.12));
+    border: 1px solid rgba(94,201,154,0.4);
+    color: #cdebd9;
+    padding: 5px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 div.stButton > button {
-    background-color: #d4af37;
-    color: black;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
+    width: 100%;
+    background: linear-gradient(135deg, #163a2f, #0e251d);
+    color: #ecd9a0;
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 10px 14px;
+    transition: all 0.18s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 div.stButton > button:hover {
-    background-color: #b89020;
-    color: white;
+    background: linear-gradient(135deg, #d4af37, #b89020);
+    color: #14201a;
+    border-color: #f0d68a;
+    box-shadow: 0 0 16px rgba(212,175,55,0.55);
+    transform: translateY(-1px);
 }
 
-[data-testid="stMetricValue"] {
-    color: #d4af37;
+div.stButton > button:active {
+    transform: translateY(0px) scale(0.98);
 }
 
-h1, h2, h3 {
-    color: #d4af37;
+/* primary CTA buttons (submit/register/etc.) get a richer gradient via type=primary */
+div.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #d4af37, #8fd9b6);
+    color: #0a1410;
+    border: none;
+    font-weight: 800;
+}
+div.stButton > button[kind="primary"]:hover {
+    box-shadow: 0 0 20px rgba(94,201,154,0.6);
+}
+
+[data-testid="stMetricValue"] { color: #d4af37; font-weight: 800; }
+[data-testid="stMetric"] {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 16px;
+    padding: 12px;
+}
+
+h1, h2, h3 { color: #f0d68a; font-family: 'Cinzel', serif; }
+
+.stSelectbox label, .stTextInput label, .stNumberInput label {
+    color: #cdebd9 !important;
+    font-weight: 600;
+}
+
+.stProgress > div > div > div {
+    background-image: linear-gradient(to right, #d4af37, #5ec99a);
+}
+
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0e1a16, #060908);
+    border-right: 1px solid rgba(212,175,55,0.2);
 }
 </style>
 """, unsafe_allow_html=True)
-
 
 
 horses = {
@@ -168,8 +321,48 @@ def assign_horse(level):
     return "No Horse Available"
 
 
-st.markdown('<div class="main-title">🐎 Horse Stable Management System</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">A luxury management system for horses, trainers, owners, and trainees</div>', unsafe_allow_html=True)
+def level_badge(level):
+    colors = {"Advanced": "badge-green", "Intermediate": "badge-blue", "Beginner": "badge-grey"}
+    cls = colors.get(level, "badge-grey")
+    return f'<span class="badge {cls}">{level}</span>'
+
+
+def status_badge(status):
+    cls = "badge-gold" if status == "stable" else "badge-blue"
+    return f'<span class="badge {cls}">{status.title()}</span>'
+
+
+def license_badge(licensed):
+    return '<span class="badge badge-green">Licensed</span>' if licensed else '<span class="badge badge-grey">Not Licensed</span>'
+
+
+def render_card(title, icon, rows):
+    rows_html = "".join(
+        f'<div class="card-row"><span class="card-label">{label}</span>'
+        f'<span class="card-value">{value}</span></div>'
+        for label, value in rows
+    )
+    st.markdown(f"""
+    <div class="card">
+        <div class="card-title">{icon} {title}</div>
+        {rows_html}
+    </div>
+    """, unsafe_allow_html=True)
+
+
+def nav_tag(label):
+    st.markdown(f'<div class="nav-tag"><span>📍 {label}</span></div>', unsafe_allow_html=True)
+
+
+# ============== HERO HEADER ==============
+
+st.markdown("""
+<div class="hero-wrap">
+    <div class="hero-glow"></div>
+    <div class="main-title">🐎 Horse Stable Management System</div>
+    <div class="sub-title">Elegance · Performance · Legacy</div>
+</div>
+""", unsafe_allow_html=True)
 
 
 main_choice = st.sidebar.selectbox(
@@ -178,58 +371,81 @@ main_choice = st.sidebar.selectbox(
 )
 
 if main_choice == "Admin":
+
     st.header("Admin Menu")
 
-    admin_choice = st.selectbox(
-        "Choose Option",
-        ["Show Horses", "Search Horse", "Horse Statistics", "Show Trainers", "Best Trainer", "Show Trainees" , "Show Owners"]
-    )
+    if "admin_choice" not in st.session_state:
+        st.session_state.admin_choice = "Show Horses"
 
-    
+    st.subheader("Choose Option")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("🐴 Show Horses", use_container_width=True):
+            st.session_state.admin_choice = "Show Horses"
+
+        if st.button("📊 Horse Statistics", use_container_width=True):
+            st.session_state.admin_choice = "Horse Statistics"
+
+        if st.button("🏆 Best Trainer", use_container_width=True):
+            st.session_state.admin_choice = "Best Trainer"
+
+        if st.button("👤 Show Owners", use_container_width=True):
+            st.session_state.admin_choice = "Show Owners"
+
+    with col2:
+        if st.button("🔍 Search Horse", use_container_width=True):
+            st.session_state.admin_choice = "Search Horse"
+
+        if st.button("👨‍🏫 Show Trainers", use_container_width=True):
+            st.session_state.admin_choice = "Show Trainers"
+
+        if st.button("🎓 Show Trainees", use_container_width=True):
+            st.session_state.admin_choice = "Show Trainees"
+
+    admin_choice = st.session_state.admin_choice
+
+    st.markdown('<hr class="divider">', unsafe_allow_html=True)
+    nav_tag(admin_choice)
+
     if admin_choice == "Show Horses":
 
         st.subheader("🐴 Stable Horses")
 
         for horse_id, horse in horses.items():
-
-            st.markdown(f"""
-            <div style="
-            background:#2c1d12;
-            padding:20px;
-            border-radius:20px;
-            border:2px solid gold;
-            margin-bottom:15px;
-            ">
-
-            <h2 style="color:gold;">🐎 {horse["horse_name"]}</h2>
-
-            <p><b>Horse ID:</b> {horse_id}</p>
-            <p><b>Owner:</b> {horse["owner_name"]}</p>
-            <p><b>Breed:</b> {horse["breed"].title()}</p>
-            <p><b>Age:</b> {horse["age"]}</p>
-            <p><b>Gender:</b> {horse["gender"].title()}</p>
-            <p><b>Status:</b> {horse["status"].title()}</p>
-            <p><b>Health Score:</b> {horse["health_score"]}/100</p>
-            <p><b>Horse Level:</b> {horse["horse_level"]}/100</p>
-
-            </div>
-            """, unsafe_allow_html=True)
-
+            render_card(
+                horse["horse_name"], "🐎",
+                [
+                    ("Horse ID", horse_id),
+                    ("Owner", horse["owner_name"]),
+                    ("Breed", horse["breed"].title()),
+                    ("Age", horse["age"]),
+                    ("Gender", horse["gender"].title()),
+                    ("Status", status_badge(horse["status"])),
+                    ("Health Score", f'{horse["health_score"]}/100'),
+                    ("Horse Level", f'{horse["horse_level"]}/100'),
+                ]
+            )
 
     elif admin_choice == "Search Horse":
         horse_name = st.text_input("Enter horse name:")
 
-        if st.button("Search"):
+        if st.button("Search", type="primary"):
             found = False
 
             for horse_id, horse in horses.items():
                 if horse["horse_name"].lower() == horse_name.lower():
                     st.success("Horse Found!")
-                    st.write("ID:", horse_id)
-                    st.write("Name:", horse["horse_name"])
-                    st.write("Owner:", horse["owner_name"])
-                    st.write("Health Score:", horse["health_score"])
-                    st.write("Horse Level:", horse["horse_level"])
+                    render_card(
+                        horse["horse_name"], "🐎",
+                        [
+                            ("ID", horse_id),
+                            ("Owner", horse["owner_name"]),
+                            ("Health Score", horse["health_score"]),
+                            ("Horse Level", horse["horse_level"]),
+                        ]
+                    )
                     found = True
                     break
 
@@ -254,8 +470,7 @@ if main_choice == "Admin":
             elif horse["breed"] == "frezian":
                 frezian_count += 1
 
-        
-        col1, col2, col3, col4 , col5= st.columns(5)
+        col1, col2, col3, col4, col5 = st.columns(5)
 
         col1.metric("🐎 Total Horses", total_horses)
         col2.metric("🏠 Stable Horses", stable_count)
@@ -263,93 +478,102 @@ if main_choice == "Admin":
         col4.metric("🌟 Arabian Horses", arabian_count)
         col5.metric("🌟 Frezian Horses", frezian_count)
 
-
-        col1.metric("Total Horses", total_horses)
-        col2.metric("Stable Horses", stable_count)
-        col3.metric("Boarding Horses", boarding_count)
-        col4.metric("Arabian Horses", arabian_count)
-        col5.metric("Frezian Horses", frezian_count)
-
     elif admin_choice == "Show Trainers":
+        st.subheader("👨‍🏫 Trainers List")
+
         for trainer_id, trainer in trainers.items():
-            st.write("Trainer ID:", trainer_id)
-            st.write("Trainer Name:", trainer["trainer_name"])
-            st.write("Age:", trainer["age"])
-            st.write("Training Type:", trainer["training_type"])
-            st.write("Sessions Completed:", trainer["sessions_completed"])
-            st.write("Performance Score:", trainer["performance_score"])
-            st.write("Level:", trainer_level(trainer["performance_score"]))
-            st.write("---")
+            lvl = trainer_level(trainer["performance_score"])
+            render_card(
+                trainer["trainer_name"], "👨‍🏫",
+                [
+                    ("Trainer ID", trainer_id),
+                    ("Age", trainer["age"]),
+                    ("Training Type", trainer["training_type"]),
+                    ("Sessions Completed", trainer["sessions_completed"]),
+                    ("Performance Score", f'{trainer["performance_score"]}/100'),
+                    ("Level", level_badge(lvl)),
+                ]
+            )
 
     elif admin_choice == "Best Trainer":
         best = max(trainers.values(), key=lambda trainer: trainer["performance_score"])
+        lvl = trainer_level(best["performance_score"])
 
-        st.success("Best Trainer")
-        st.write("Trainer Name:", best["trainer_name"])
-        st.write("Performance Score:", best["performance_score"])
-        st.write("Sessions Completed:", best["sessions_completed"])
-        st.write("Level:", trainer_level(best["performance_score"]))
+        st.subheader("🏆 Best Trainer")
+        render_card(
+            best["trainer_name"], "🏆",
+            [
+                ("Performance Score", f'{best["performance_score"]}/100'),
+                ("Sessions Completed", best["sessions_completed"]),
+                ("Level", level_badge(lvl)),
+            ]
+        )
 
     elif admin_choice == "Show Trainees":
+        st.subheader("🎓 Trainees List")
+
         for trainee_id, trainee in st.session_state.trainees.items():
-            st.write("Trainee ID:", trainee_id)
-            st.write("Name:", trainee["trainee_name"])
-            st.write("Age:", trainee["age"])
-            st.write("Training Type:", trainee["training_type"])
-            st.write("Level:", trainee["level"])
-            st.write("Completed Classes:", trainee["completed_classes"])
-            st.write("Package:", trainee["package"])
-            st.write("Assigned Trainer:", trainee["assigned_trainer"])
-            st.write("Assigned Horse:", trainee["assigned_horse"])
-            st.write("License:", trainee["license"])
-            st.write("---")
+            render_card(
+                trainee["trainee_name"], "🎓",
+                [
+                    ("Trainee ID", trainee_id),
+                    ("Age", trainee["age"]),
+                    ("Training Type", trainee["training_type"]),
+                    ("Level", level_badge(trainee["level"])),
+                    ("Completed Classes", trainee["completed_classes"]),
+                    ("Package", trainee["package"]),
+                    ("Assigned Trainer", trainee["assigned_trainer"]),
+                    ("Assigned Horse", trainee["assigned_horse"]),
+                    ("License", license_badge(trainee["license"])),
+                ]
+            )
 
     elif admin_choice == "Show Owners":
 
         st.subheader("👤 Owners List")
 
         for owner_id, owner in owners.items():
-
-            st.markdown(f"""
-            <div style="
-            background:#2c1d12;
-            padding:20px;
-            border-radius:20px;
-            border:2px solid gold;
-            margin-bottom:15px;
-            ">
-
-            <h2 style="color:gold;">
-            👤 {owner["owner_name"]}
-            </h2>
-
-            <p><b>Owner ID:</b> {owner_id}</p>
-
-            <p><b>Phone:</b> {owner["phone"]}</p>
-
-            <p><b>City:</b> {owner["city"]}</p>
-
-            <p><b>Owner Type:</b> {owner["owner_type"]}</p>
-
-            </div>
-            """, unsafe_allow_html=True)
+            render_card(
+                owner["owner_name"], "👤",
+                [
+                    ("Owner ID", owner_id),
+                    ("Phone", owner["phone"]),
+                    ("City", owner["city"]),
+                    ("Owner Type", owner["owner_type"]),
+                ]
+            )
 
 
 elif main_choice == "Horse Owner":
 
     st.header("🐎 Horse Owner Menu")
 
-    owner_choice = st.selectbox(
-        "Choose Option",
-        ["Boarding", "View My Horses"]
-    )
+    if "owner_choice" not in st.session_state:
+        st.session_state.owner_choice = "Boarding"
+
+    st.subheader("Choose Option")
+
+    ocol1, ocol2 = st.columns(2)
+
+    with ocol1:
+        if st.button("📋 Boarding", use_container_width=True):
+            st.session_state.owner_choice = "Boarding"
+
+    with ocol2:
+        if st.button("🐴 View My Horses", use_container_width=True):
+            st.session_state.owner_choice = "View My Horses"
+
+    owner_choice = st.session_state.owner_choice
+
+    st.markdown('<hr class="divider">', unsafe_allow_html=True)
+    nav_tag(owner_choice)
 
     # ================= BOARDING =================
 
     if owner_choice == "Boarding":
 
         owner_name = st.text_input("Owner Name")
-
+        phone = st.text_input("Phone Number")
         horse_name = st.text_input("Horse Name")
 
         horse_age = st.number_input(
@@ -377,31 +601,26 @@ elif main_choice == "Horse Owner":
             ]
         )
 
-        if st.button("Submit Boarding Request"):
+        if st.button("Submit Boarding Request", type="primary"):
 
-            st.success("Boarding Request Submitted Successfully")
+          
 
-            st.markdown(f"""
-            <div style="
-            background:#2c1d12;
-            padding:20px;
-            border-radius:20px;
-            border:2px solid gold;
-            margin-top:10px;
-            ">
+            if owner_name == "" or phone == "":
+                st.error("Please enter owner name and phone number.")
 
-            <h2 style="color:gold;">
-            📋 Boarding Request
-            </h2>
-
-            <p><b>Owner:</b> {owner_name}</p>
-            <p><b>Horse:</b> {horse_name}</p>
-            <p><b>Age:</b> {horse_age}</p>
-            <p><b>Gender:</b> {horse_gender}</p>
-            <p><b>Duration:</b> {duration}</p>
-
-            </div>
-            """, unsafe_allow_html=True)
+            else:
+                 st.success("Boarding Request Submitted Successfully")
+            render_card(
+                "Boarding Request", "📋",
+                [
+                    ("Owner", owner_name),
+                    ("Phone", phone),
+                    ("Horse", horse_name),
+                    ("Age", horse_age),
+                    ("Gender", horse_gender),
+                    ("Duration", duration),
+                ]
+            )
 
     # ================= VIEW MY HORSES =================
 
@@ -409,61 +628,60 @@ elif main_choice == "Horse Owner":
 
         owner_name = st.text_input("Enter Owner Name")
 
-        if st.button("View My Horses"):
+        if st.button("View My Horses", type="primary"):
 
             found = False
 
             for horse_id, horse in horses.items():
 
                 if horse["owner_name"].lower() == owner_name.lower():
-
-                    st.markdown(f"""
-                    <div style="
-                    background:#2c1d12;
-                    padding:20px;
-                    border-radius:20px;
-                    border:2px solid gold;
-                    margin-bottom:15px;
-                    ">
-
-                    <h2 style="color:gold;">
-                    🐎 {horse["horse_name"]}
-                    </h2>
-
-                    <p><b>Horse ID:</b> {horse_id}</p>
-
-                    <p><b>Owner:</b> {horse["owner_name"]}</p>
-
-                    <p><b>Breed:</b> {horse["breed"].title()}</p>
-
-                    <p><b>Age:</b> {horse["age"]}</p>
-
-                    <p><b>Gender:</b> {horse["gender"].title()}</p>
-
-                    <p><b>Status:</b> {horse["status"].title()}</p>
-
-                    <p><b>Health Score:</b> {horse["health_score"]}/100</p>
-
-                    <p><b>Horse Level:</b> {horse["horse_level"]}/100</p>
-
-                    </div>
-                    """, unsafe_allow_html=True)
-
+                    render_card(
+                        horse["horse_name"], "🐎",
+                        [
+                            ("Horse ID", horse_id),
+                            ("Owner", horse["owner_name"]),
+                            ("Breed", horse["breed"].title()),
+                            ("Age", horse["age"]),
+                            ("Gender", horse["gender"].title()),
+                            ("Status", status_badge(horse["status"])),
+                            ("Health Score", f'{horse["health_score"]}/100'),
+                            ("Horse Level", f'{horse["horse_level"]}/100'),
+                        ]
+                    )
                     found = True
 
             if found == False:
                 st.error("No horses found for this owner.")
 
 
-
-
 elif main_choice == "Trainee":
     st.header("Trainee Menu")
 
-    trainee_choice = st.selectbox(
-        "Choose Option",
-        ["Register Trainee", "My Information", "Progress Report", "Complete Class"]
-    )
+    if "trainee_choice" not in st.session_state:
+        st.session_state.trainee_choice = "Register Trainee"
+
+    st.subheader("Choose Option")
+
+    tcol1, tcol2 = st.columns(2)
+
+    with tcol1:
+        if st.button("📝 Register Trainee", use_container_width=True):
+            st.session_state.trainee_choice = "Register Trainee"
+
+        if st.button("📈 Progress Report", use_container_width=True):
+            st.session_state.trainee_choice = "Progress Report"
+
+    with tcol2:
+        if st.button("ℹ️ My Information", use_container_width=True):
+            st.session_state.trainee_choice = "My Information"
+
+        if st.button("✅ Complete Class", use_container_width=True):
+            st.session_state.trainee_choice = "Complete Class"
+
+    trainee_choice = st.session_state.trainee_choice
+
+    st.markdown('<hr class="divider">', unsafe_allow_html=True)
+    nav_tag(trainee_choice)
 
     if trainee_choice == "Register Trainee":
         name = st.text_input("Enter your name:")
@@ -472,7 +690,7 @@ elif main_choice == "Trainee":
         package = st.selectbox("Choose package:", [10, 20, 40])
         level = st.selectbox("Initial Assessment:", ["Beginner", "Intermediate", "Advanced"])
 
-        if st.button("Register"):
+        if st.button("Register", type="primary"):
             trainee_id = max(st.session_state.trainees.keys()) + 1
             trainer_name = assign_trainer(training_type, level)
             horse_name = assign_horse(level)
@@ -490,31 +708,35 @@ elif main_choice == "Trainee":
             }
 
             st.success("Registration Successful.")
-            st.write("Assigned Trainer:", trainer_name)
-            st.write("Assigned Horse:", horse_name)
+            render_card(
+                name, "🎓",
+                [
+                    ("Assigned Trainer", trainer_name),
+                    ("Assigned Horse", horse_name),
+                ]
+            )
 
     elif trainee_choice == "My Information":
         name = st.text_input("Enter your name:")
 
-        if st.button("Show Information"):
+        if st.button("Show Information", type="primary"):
             found = False
 
             for trainee in st.session_state.trainees.values():
                 if trainee["trainee_name"].lower() == name.lower():
-                    st.write("Name:", trainee["trainee_name"])
-                    st.write("Age:", trainee["age"])
-                    st.write("Training Type:", trainee["training_type"])
-                    st.write("Level:", trainee["level"])
-                    st.write("Package:", trainee["package"])
-                    st.write("Completed Classes:", trainee["completed_classes"])
-                    st.write("Assigned Trainer:", trainee["assigned_trainer"])
-                    st.write("Assigned Horse:", trainee["assigned_horse"])
-
-                    if trainee["license"]:
-                        st.success("License Status: Licensed")
-                    else:
-                        st.warning("License Status: Not Licensed")
-
+                    render_card(
+                        trainee["trainee_name"], "🎓",
+                        [
+                            ("Age", trainee["age"]),
+                            ("Training Type", trainee["training_type"]),
+                            ("Level", level_badge(trainee["level"])),
+                            ("Package", trainee["package"]),
+                            ("Completed Classes", trainee["completed_classes"]),
+                            ("Assigned Trainer", trainee["assigned_trainer"]),
+                            ("Assigned Horse", trainee["assigned_horse"]),
+                            ("License Status", license_badge(trainee["license"])),
+                        ]
+                    )
                     found = True
                     break
 
@@ -524,7 +746,7 @@ elif main_choice == "Trainee":
     elif trainee_choice == "Progress Report":
         name = st.text_input("Enter your name:")
 
-        if st.button("Show Progress"):
+        if st.button("Show Progress", type="primary"):
             found = False
 
             for trainee in st.session_state.trainees.values():
@@ -535,9 +757,14 @@ elif main_choice == "Trainee":
                     if remaining < 0:
                         remaining = 0
 
-                    st.write("Completed Classes:", trainee["completed_classes"])
-                    st.write("Remaining Classes:", remaining)
-                    st.write("Progress:", str(round(progress)) + "%")
+                    render_card(
+                        trainee["trainee_name"], "📈",
+                        [
+                            ("Completed Classes", trainee["completed_classes"]),
+                            ("Remaining Classes", remaining),
+                            ("Progress", f"{round(progress)}%"),
+                        ]
+                    )
                     st.progress(min(progress / 100, 1.0))
 
                     found = True
@@ -549,7 +776,7 @@ elif main_choice == "Trainee":
     elif trainee_choice == "Complete Class":
         name = st.text_input("Enter your name:")
 
-        if st.button("Complete One Class"):
+        if st.button("Complete One Class", type="primary"):
             found = False
 
             for trainee in st.session_state.trainees.values():
