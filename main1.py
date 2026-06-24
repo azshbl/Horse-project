@@ -308,7 +308,7 @@ def request_stable_service():                                      # displays th
     print("Cost:", cost, "SAR")
 
 
-def view_my_horses():
+def view_my_horses():                                #View the horses of the horse owner
     print("\n--- VIEW MY HORSES ---")
 
     owner_name = input("Enter your name: ")
