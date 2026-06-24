@@ -200,7 +200,7 @@ def horse_statistics():                         #this part is to count how many 
     print(f"Frezian Horses: {frezian_count}")
 
 
-def show_owners():
+def show_owners():                                ###to show the owner list
 
     print("\n===== OWNERS LIST =====")
 
@@ -251,11 +251,12 @@ def admin_menu():
 
 # ================= HORSE OWNER FUNCTIONS =================
 
-def request_stable_service():
+def request_stable_service():                            
     print("        \nBOARDING REQUEST       ")
 
     owner_name = input("Enter Owner Name: ")
     horse_name = input("Enter Horse Name: ")
+    owner_number = input("Enter your phone number")
     horse_age = input("Enter your horse age: ")
     horse_gender = input("Enter your horse gender (male / female): ")   
 
@@ -298,6 +299,7 @@ def request_stable_service():
     print("\nSuccess! Boarding request submitted.")
     print("Owner Name:", owner_name)
     print("Horse Name:", horse_name)
+    print("Owner Number" , owner_number)
     print("Horse Age:", horse_age)
     print("Horse Gender:", horse_gender)
     print("Duration:", duration)
