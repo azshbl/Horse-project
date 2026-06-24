@@ -215,3 +215,17 @@ def admin_menu():
 
         else:
             print("Invalid choice.")
+
+
+
+
+"""""""""""""""""""""""""""
+1. What was the most challenging part?
+it was about designing a system that can manage all stable information for example horses, horse owners, trainers and trainees.
+
+2. Which concept did you enjoy the most?
+i enjoyed every second working because this a problem that i have gone throght as a stable owner, so this was a big sulotion.
+
+3. What would you improve if you had more time?
+i will add horse training schedules, financial records, and a database connection to make the system more practical for real stable operations.
+"""""""""""""""""""""""""""
