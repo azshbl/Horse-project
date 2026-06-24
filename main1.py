@@ -324,6 +324,9 @@ def horse_owner_menu():
         else:
             print("Invalid choice.")
 
+ # in request_stable_service()  (If I had more time, I would improve this code and add features to it.)
+ # in if-elif-else statment  (I enjoyed the if statement concept; writing the conditions was beautiful.)
+ # in horse_owner_menu()   ( This part of the code was very challenging for me as I had to search through many data sources.)
 
 # ================= TRAINEE FUNCTIONS =================
 
