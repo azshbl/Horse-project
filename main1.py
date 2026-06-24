@@ -62,6 +62,23 @@ trainees = {
 - If I had more time, I would add data storage like external JSON file so the data would be saved permanently.
 """
 
+
+
+
+Turki Abuhaimed
+"""""""""""""""""""""""""""
+What was the most challenging part?
+it was about designing a system that can manage all stable information for example horses, horse owners, trainers and trainees.
+
+Which concept did you enjoy the most?
+i enjoyed every second working because this a problem that i have gone throght as a stable owner, so this was a big sulotion.
+
+What would you improve if you had more time?
+i will add horse training schedules, financial records, and a database connection to make the system more practical for real stable operations.
+"""""""""""""""""""""""""""
+
+
+
 # ================= ADMIN FUNCTIONS =================
 
 def show_horses():
