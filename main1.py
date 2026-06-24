@@ -253,7 +253,7 @@ def admin_menu():
 
 # ================= HORSE OWNER FUNCTIONS =================
 
-def request_stable_service():
+def request_stable_service():                                      # displays the boarding service
     print("        \nBOARDING REQUEST       ")
 
     owner_name = input("Enter Owner Name: ")
