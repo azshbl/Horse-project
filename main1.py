@@ -487,6 +487,16 @@ def complete_class(name):
 
     for trainee in trainees.values():
         if trainee["trainee_name"].lower() == name.lower():
+            
+            if trainee["completed_classes"] >= trainee["package"]:
+
+                print("\nYou have completed all classes in your package.")
+
+                if trainee["license"]:
+                    print("License Status: Licensed")
+
+                return
+            
             trainee["completed_classes"] += 1
 
             print("\nClass Completed Successfully.")
