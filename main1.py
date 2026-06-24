@@ -327,7 +327,7 @@ def view_my_horses():                                #View the horses of the hor
         print("No horses found for this owner.")
 
 
-def horse_owner_menu():
+def horse_owner_menu():                                  #View Horse Owner menu
     while True:
         print("\n=== HORSE OWNER MENU ===")
         print("1. Boarding")
