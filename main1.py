@@ -81,7 +81,7 @@ i will add horse training schedules, financial records, and a database connectio
 
 # ================= ADMIN FUNCTIONS =================
 
-def show_horses():
+def show_horses():                                         #this part is to show horses
     print("\n========== HORSES LIST ==========\n")
 
     for horse_num, horse in horses.items():
