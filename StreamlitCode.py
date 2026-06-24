@@ -172,7 +172,7 @@ if main_choice == "Admin":
 
     admin_choice = st.selectbox(
         "Choose Option",
-        ["Show Horses", "Search Horse", "Horse Statistics", "Show Trainers", "Best Trainer", "Show Trainees"]
+        ["Show Horses", "Search Horse", "Horse Statistics", "Show Trainers", "Best Trainer", "Show Trainees" , "Show Owners"]
     )
 
     
@@ -293,6 +293,35 @@ if main_choice == "Admin":
             st.write("License:", trainee["license"])
             st.write("---")
 
+    elif admin_choice == "Show Owners":
+
+        st.subheader("👤 Owners List")
+
+        for owner_id, owner in owners.items():
+
+            st.markdown(f"""
+            <div style="
+            background:#2c1d12;
+            padding:20px;
+            border-radius:20px;
+            border:2px solid gold;
+            margin-bottom:15px;
+            ">
+
+            <h2 style="color:gold;">
+            👤 {owner["owner_name"]}
+            </h2>
+
+            <p><b>Owner ID:</b> {owner_id}</p>
+
+            <p><b>Phone:</b> {owner["phone"]}</p>
+
+            <p><b>City:</b> {owner["city"]}</p>
+
+            <p><b>Owner Type:</b> {owner["owner_type"]}</p>
+
+            </div>
+            """, unsafe_allow_html=True)
 
 
 elif main_choice == "Horse Owner":
