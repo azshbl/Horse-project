@@ -576,7 +576,7 @@ def trainee_menu():
 
 # ================= MAIN MENU =================
 
-def main_menu():
+def main_menu():                    #We start the project from the main menu and a list will appear to chose from the menu
     while True:
         print("\n========== MAIN MENU ==========")
         print("1. Admin")
