@@ -363,7 +363,7 @@ def assign_trainer(training_type, level):
             if training_type.lower() in trainer["training_type"].lower():
                 return trainer["trainer_name"]
 
-    return "No Trainer Available"
+    return "ًWill be assigned later "
 
 
 def assign_horse(level):
