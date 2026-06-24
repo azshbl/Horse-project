@@ -52,7 +52,15 @@ trainees = {
     3: {"trainee_name": "Khalid", "age": 25, "training_type": "For fun", "level": "Advanced", "completed_classes": 35, "package": 40, "assigned_trainer": "Turki", "assigned_horse": "Wadah", "license": False},
     4: {"trainee_name": "Saad", "age": 21, "training_type": "Jumping", "level": "Advanced", "completed_classes": 40, "package": 40, "assigned_trainer": "Abdulaziz", "assigned_horse": "Shamekh", "license": True}
 }
+ """ Nawaf Aldhowaihi   
+ Reflection
 
+- The most challenging part was working with the horses dictionary because it contained a lot of data and details.
+
+- The concept I enjoyed the most was connecting all the functions and menus together to make the system work as one complete program.
+
+- If I had more time, I would add data storage using an external JSON file so the data would be saved permanently.
+"""
 
 # ================= ADMIN FUNCTIONS =================
 
