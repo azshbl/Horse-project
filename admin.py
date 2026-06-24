@@ -55,7 +55,7 @@ trainees = {
 }
 
 
-def show_horses():
+def show_horses():                                     #this part is to show horses
 
     print("\n========== HORSES LIST ==========\n")
 
@@ -72,7 +72,7 @@ def show_horses():
 
 
 
-def search_horse():
+def search_horse():                                       #this part is to search for horses
 
     while True:
 
@@ -99,7 +99,7 @@ def search_horse():
 
 
 
-def show_trainers():
+def show_trainers():                                   #this part is to show trainers
 
     print("\n===== TRAINERS LIST =====\n")
 
@@ -115,7 +115,7 @@ def show_trainers():
 
 
 
-def best_trainer():
+def best_trainer():                                                       #this part is to calcluate the best trainer using the performance score
 
     best = max(trainers.values(), key=lambda trainer: trainer["performance_score"])
 
@@ -127,7 +127,7 @@ def best_trainer():
 
 
 
-def show_trainees():
+def show_trainees():                                    #this part is to show trainees
 
     print("\n===== TRAINEES LIST =====\n")
 
@@ -144,7 +144,7 @@ def show_trainees():
 
 
 
-def horse_records():
+def horse_records():                                   #this part is to count how many horses
 
     total_horses = len(horses)
 
@@ -177,7 +177,7 @@ def horse_records():
 
 
 
-def admin_menu():
+def admin_menu():                                    #this is the main menu
 
     while True:
 
