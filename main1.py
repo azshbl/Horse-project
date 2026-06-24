@@ -59,7 +59,7 @@ trainees = {
 
 - The concept I enjoyed the most was connecting all the functions and menus together to make the system work as one complete program.
 
-- If I had more time, I would add data storage using an external JSON file so the data would be saved permanently.
+- If I had more time, I would add data storage like external JSON file so the data would be saved permanently.
 """
 
 # ================= ADMIN FUNCTIONS =================
